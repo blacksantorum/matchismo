@@ -25,6 +25,7 @@
 		EC180E931864F67D004A3353 /* Deck.m in Sources */ = {isa = PBXBuildFile; fileRef = EC180E921864F67D004A3353 /* Deck.m */; };
 		EC180E961864F907004A3353 /* PlayingCard.m in Sources */ = {isa = PBXBuildFile; fileRef = EC180E951864F907004A3353 /* PlayingCard.m */; };
 		EC180E991864FE05004A3353 /* PlayingCardDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = EC180E981864FE05004A3353 /* PlayingCardDeck.m */; };
+		EC180E9C186575DE004A3353 /* CardMatchingGame.m in Sources */ = {isa = PBXBuildFile; fileRef = EC180E9B186575DE004A3353 /* CardMatchingGame.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,8 @@
 		EC180E951864F907004A3353 /* PlayingCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingCard.m; sourceTree = "<group>"; };
 		EC180E971864FE05004A3353 /* PlayingCardDeck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayingCardDeck.h; sourceTree = "<group>"; };
 		EC180E981864FE05004A3353 /* PlayingCardDeck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingCardDeck.m; sourceTree = "<group>"; };
+		EC180E9A186575DE004A3353 /* CardMatchingGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardMatchingGame.h; path = Matchismo/CardMatchingGame.h; sourceTree = "<group>"; };
+		EC180E9B186575DE004A3353 /* CardMatchingGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CardMatchingGame.m; path = Matchismo/CardMatchingGame.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +171,8 @@
 		EC180E901864F13A004A3353 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				EC180E9A186575DE004A3353 /* CardMatchingGame.h */,
+				EC180E9B186575DE004A3353 /* CardMatchingGame.m */,
 				EC180E8D1864F12F004A3353 /* Card.h */,
 				EC180E8E1864F12F004A3353 /* Card.m */,
 				EC180E911864F67D004A3353 /* Deck.h */,
@@ -283,6 +288,7 @@
 				EC180E931864F67D004A3353 /* Deck.m in Sources */,
 				EC180E691864EC88004A3353 /* CardGameAppDelegate.m in Sources */,
 				EC180E6F1864EC88004A3353 /* CardGameViewController.m in Sources */,
+				EC180E9C186575DE004A3353 /* CardMatchingGame.m in Sources */,
 				EC180E991864FE05004A3353 /* PlayingCardDeck.m in Sources */,
 				EC180E651864EC88004A3353 /* main.m in Sources */,
 				EC180E8F1864F12F004A3353 /* Card.m in Sources */,
