@@ -18,7 +18,11 @@
 
 -(void)chooseCardAtIndex:(NSUInteger)index;
 -(Card *)cardAtIndex:(NSUInteger)index;
+-(NSArray *)chosenUnmatchedCards;
 
 @property (nonatomic, readonly) NSInteger score;
+@property (nonatomic) NSInteger matchMode;
+@property (nonatomic, strong) Card *lastChosenCard;
+@property (nonatomic) NSInteger lastScoreChange;
 
 @end

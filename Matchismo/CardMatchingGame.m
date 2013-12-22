@@ -11,6 +11,7 @@
 @interface CardMatchingGame()
 @property (nonatomic,readwrite) NSInteger score;
 @property (nonatomic,strong) NSMutableArray *cards; //of Card
+
 @end
 
 
@@ -22,6 +23,14 @@
         _cards = [[NSMutableArray alloc] init];
     }
     return _cards;
+}
+
+-(NSInteger)matchMode
+{
+    if (!_matchMode) {
+        _matchMode = 2;
+    }
+    return _matchMode;
 }
 
 -(instancetype)initWithCardCount:(NSUInteger)count usingDeck:(Deck *)deck
@@ -42,6 +51,17 @@
     return self;
 }
 
+-(NSArray *)chosenUnmatchedCards
+{
+    NSMutableArray *chosenUnmatchedCards = [[NSMutableArray alloc] init];
+    for (Card *c in self.cards) {
+        if (c.isChosen && !c.isMatched) {
+            [chosenUnmatchedCards addObject:c];
+        }
+    }
+    return chosenUnmatchedCards;
+}
+
 -(Card *)cardAtIndex:(NSUInteger)index
 {
     return (index<[self.cards count]) ? self.cards[index] : nil;
@@ -54,29 +74,36 @@ static const int COST_TO_CHOOSE = 1;
 -(void)chooseCardAtIndex:(NSUInteger)index
 {
     Card *card = [self cardAtIndex:index];
-    
+    self.lastScoreChange = 0;
     if (!card.isMatched) {
         if (card.isChosen) {
             card.chosen = NO;
-        } else {
-            for (Card *otherCard in self.cards) {
-                if (otherCard.isChosen && !otherCard.isMatched) {
-                    int matchScore = [card match:@[otherCard]];
-                    if (matchScore) {
-                        self.score += matchScore * MATCH_BONUS;
-                        otherCard.matched = YES;
-                        card.matched= YES;
-                    } else {
-                        self.score -= MISMATCH_PENALTY;
-                        otherCard.chosen = NO;
-                    }
-                    break; // can only choose 2 cards for now
-                }
-            }
-            self.score -= COST_TO_CHOOSE;
+        } else  if  ([[self chosenUnmatchedCards] count] < self.matchMode - 1) {
+            self.lastChosenCard = card;
             card.chosen = YES;
+            self.score -= COST_TO_CHOOSE;
+        } else {
+            self.lastChosenCard = card;
+            int matchScore = [card match:[self chosenUnmatchedCards]];
+            card.chosen = YES;
+            self.score -= COST_TO_CHOOSE;
+            if (matchScore) {
+                self.lastScoreChange = matchScore * MATCH_BONUS;
+                self.score += self.lastScoreChange;
+                for (Card *c in [self chosenUnmatchedCards]) {
+                    c.matched = YES;
+                }
+            } else {
+                self.lastScoreChange = 0 - MISMATCH_PENALTY;
+                self.score -= self.lastScoreChange;
+                for (Card *c in [self chosenUnmatchedCards]) {
+                    c.chosen = NO;
+                }
+                card.chosen = YES;
+            }
         }
     }
+    NSLog(@"%@",self.lastChosenCard.contents);
 }
 
 @end

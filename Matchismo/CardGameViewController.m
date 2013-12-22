@@ -14,9 +14,21 @@
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (nonatomic,strong) CardMatchingGame *game;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
+@property (weak, nonatomic) IBOutlet UISwitch *modeSwitch;
+@property (weak, nonatomic) IBOutlet UILabel *narrationLabel;
+@property (strong, nonatomic) NSString *chosenUnmatchedString;
+
 @end
 
 @implementation CardGameViewController
+
+-(NSString *)chosenUnmatchedString
+{
+    if (!_chosenUnmatchedString) {
+        _chosenUnmatchedString = [[NSString alloc] init];
+    }
+    return _chosenUnmatchedString;
+}
 
 -(CardMatchingGame *)game
 {
@@ -26,6 +38,13 @@
     return _game;
 }
 
+- (IBAction)newGame:(UIButton *)sender {
+    self.game = [[CardMatchingGame alloc] initWithCardCount:[self.cardButtons count] usingDeck:[self createDeck]];
+    self.modeSwitch.enabled = YES;
+    self.narrationLabel.text = @"";
+    self.chosenUnmatchedString = @"";
+    [self updateUI];
+}
 
 -(Deck *)createDeck
 {
@@ -33,10 +52,32 @@
 }
 
 - (IBAction)touchCardButton:(UIButton *)sender {
+    if ([self.modeSwitch isOn]) {
+        self.game.matchMode = 3;
+    } else {
+        self.game.matchMode = 2;
+    }
     int chosenButtonIndex = [self.cardButtons indexOfObject:sender];
     [self.game chooseCardAtIndex:chosenButtonIndex];
+    if (self.modeSwitch.enabled) {
+        self.modeSwitch.enabled = NO;
+    }
+    [self narrate];
     [self updateUI];
-    
+}
+
+-(void)narrate
+{
+    self.chosenUnmatchedString = [self.chosenUnmatchedString stringByAppendingString:self.game.lastChosenCard.contents];
+    if (self.game.lastScoreChange > 0) {
+        self.narrationLabel.text = [NSString stringWithFormat:@"Matched %@ for %d points",self.chosenUnmatchedString,self.game.lastScoreChange];
+        self.chosenUnmatchedString = @"";
+    } else if (self.game.lastScoreChange < 0){
+        self.narrationLabel.text = [NSString stringWithFormat:@"%@ don't match! %d point penalty!",self.chosenUnmatchedString,self.game.lastScoreChange];
+        self.chosenUnmatchedString = self.game.lastChosenCard.contents;
+    } else {
+        self.narrationLabel.text = self.chosenUnmatchedString;
+    }
 }
 
 -(void)updateUI
