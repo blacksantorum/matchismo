@@ -103,7 +103,6 @@ static const int COST_TO_CHOOSE = 1;
             }
         }
     }
-    NSLog(@"%@",self.lastChosenCard.contents);
 }
 
 @end

@@ -7,7 +7,6 @@
 //
 
 #import "CardGameViewController.h"
-#import "PlayingCardDeck.h"
 #import "CardMatchingGame.h"
 
 @interface CardGameViewController ()
@@ -48,7 +47,7 @@
 
 -(Deck *)createDeck
 {
-    return [[PlayingCardDeck alloc] init];
+    return nil;
 }
 
 - (IBAction)touchCardButton:(UIButton *)sender {
@@ -94,12 +93,12 @@
 
 -(NSString *)titleForCard:(Card *)card
 {
-    return card.isChosen ? card.contents : @"";
+    return nil;
 }
 
 -(UIImage *)backgroundImageForCard:(Card *)card
 {
-    return [UIImage imageNamed:card.isChosen ? @"cardfront" : @"cardback"];
+    return nil;
 }
 
 @end
