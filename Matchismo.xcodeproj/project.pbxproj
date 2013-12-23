@@ -29,6 +29,7 @@
 		ECE8CC401866AF2100D2C936 /* PlayingCardGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECE8CC3F1866AF2100D2C936 /* PlayingCardGameViewController.m */; };
 		ECE8CC431866B31F00D2C936 /* SetCard.m in Sources */ = {isa = PBXBuildFile; fileRef = ECE8CC421866B31F00D2C936 /* SetCard.m */; };
 		ECE8CC461866B35C00D2C936 /* SetCardDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = ECE8CC451866B35C00D2C936 /* SetCardDeck.m */; };
+		ECE8CC491867EB9B00D2C936 /* SetCardGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECE8CC481867EB9B00D2C936 /* SetCardGameViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,8 @@
 		ECE8CC421866B31F00D2C936 /* SetCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetCard.m; path = Model/SetCard.m; sourceTree = "<group>"; };
 		ECE8CC441866B35C00D2C936 /* SetCardDeck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetCardDeck.h; path = Model/SetCardDeck.h; sourceTree = "<group>"; };
 		ECE8CC451866B35C00D2C936 /* SetCardDeck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetCardDeck.m; path = Model/SetCardDeck.m; sourceTree = "<group>"; };
+		ECE8CC471867EB9B00D2C936 /* SetCardGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetCardGameViewController.h; sourceTree = "<group>"; };
+		ECE8CC481867EB9B00D2C936 /* SetCardGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetCardGameViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +140,8 @@
 			isa = PBXGroup;
 			children = (
 				EC180E6A1864EC88004A3353 /* Main.storyboard */,
+				ECE8CC471867EB9B00D2C936 /* SetCardGameViewController.h */,
+				ECE8CC481867EB9B00D2C936 /* SetCardGameViewController.m */,
 				EC180E6D1864EC88004A3353 /* CardGameViewController.h */,
 				EC180E6E1864EC88004A3353 /* CardGameViewController.m */,
 				ECE8CC3E1866AF2100D2C936 /* PlayingCardGameViewController.h */,
@@ -300,6 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC180E961864F907004A3353 /* PlayingCard.m in Sources */,
+				ECE8CC491867EB9B00D2C936 /* SetCardGameViewController.m in Sources */,
 				EC180E931864F67D004A3353 /* Deck.m in Sources */,
 				EC180E691864EC88004A3353 /* CardGameAppDelegate.m in Sources */,
 				ECE8CC461866B35C00D2C936 /* SetCardDeck.m in Sources */,
